@@ -2,7 +2,7 @@
 Web service to identify a pinball machine from a backglass image.
 
 ## AWS Instance
-	https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance
+	(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance)
 
 1. Choose an Amazon Machine Image (AMI)
 * Ubuntu Server 16.04 LTS (HVM), SSD Volume Type - ami-79873901
@@ -23,6 +23,8 @@ Web service to identify a pinball machine from a backglass image.
 * SSH - My IP
 * HTTP - Anywhere
 
+---
+
 Create a new key pair
 * AWS_180218
 
@@ -30,14 +32,14 @@ Download Key Pair
 * AWS_180218.pem
 
 ## Connecting to AWS Instance
-	https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances:sort=instanceId
+	(https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances:sort=instanceId)
 
 Select instance, Actions | Connect
 * chmod 400 AWS_180218.pem
 * Copy the Example ssh command into a bash command window
 
 ## Flask
-	https://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/
+	(https://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/)
 
 * sudo apt-get update
 * sudo apt-get install apache2
@@ -47,9 +49,10 @@ Select instance, Actions | Connect
 * git clone http://github.com/Invader-Zim/pinball_backglass flaskapp
 * sudo ln -sT ~/flaskapp /var/www/html/flaskapp
 
+---
 
 * nano /etc/apache2/sites-enabled/000-default.conf
-	# Add the following just after DocumentRoot /var/www/html
+Add the following just after DocumentRoot /var/www/html
 	WSGIDaemonProcess flaskapp threads=5
 	WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
 
@@ -60,6 +63,7 @@ Select instance, Actions | Connect
 	    Allow from all
 	</Directory>
 
+---
 
 * sudo apachectl restart
 
