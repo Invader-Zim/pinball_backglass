@@ -52,7 +52,9 @@ Select instance, Actions | Connect
 ---
 
 * nano /etc/apache2/sites-enabled/000-default.conf
+
 Add the following just after DocumentRoot /var/www/html
+
 	WSGIDaemonProcess flaskapp threads=5
 	WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
 
