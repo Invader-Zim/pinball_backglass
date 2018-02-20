@@ -1,6 +1,9 @@
 from flask import Flask, request, Response
 app = Flask(__name__)
 
+import turicreate as tc
+model = tc.load_model('/home/ubuntu/flaskapp/_backglass_v201_')
+
 from flask import jsonify
 
 # Exception classes to allow more expressive errors
@@ -60,11 +63,11 @@ def backglassIdentify():
 	import urllib
 	urllib.urlretrieve( image_url, "{0}/{1}".format(folder, filename))
 
-	import turicreate as tc
+    # import turicreate as tc
 	data = tc.image_analysis.load_images(folder, format=image_format, with_path=True)
 
 	# because there is no concurrency model in python, we can't build a model pool, or cache the loaded model.
-	model = tc.load_model('/home/ubuntu/flaskapp/_backglass_v201_')
+    # model = tc.load_model('/home/ubuntu/flaskapp/_backglass_v201_')
 
 	sf = model.predict_topk(data, k=3)
 
